@@ -91,7 +91,7 @@ export default function EventDetailPage() {
     async function loadEvent() {
       if (!id) return;
 
-      // Fetch event details
+      // 1. Fetch event details first (since we need organizer_id)
       const { data: eventData, error: eventError } = await supabase
         .from('events')
         .select('*')
@@ -105,25 +105,32 @@ export default function EventDetailPage() {
 
       setEvent(eventData);
 
-      // Fetch stall packages
-      const { data: packages } = await supabase
-        .from('stall_packages')
-        .select('*')
-        .eq('event_id', id)
-        .order('price', { ascending: true });
+      // 2. Fetch stall packages and organizer profile in parallel
+      try {
+        const [packagesResult, profileResult] = await Promise.all([
+          supabase
+            .from('stall_packages')
+            .select('*')
+            .eq('event_id', id)
+            .order('price', { ascending: true }),
+          supabase
+            .from('profiles')
+            .select('name')
+            .eq('id', eventData.organizer_id)
+            .single()
+        ]);
 
-      if (packages) setStallPackages(packages);
-
-      // Fetch organizer name
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('name')
-        .eq('id', eventData.organizer_id)
-        .single();
-
-      if (profile?.name) setOrganizerName(profile.name);
-
-      setLoading(false);
+        if (packagesResult.data) {
+          setStallPackages(packagesResult.data);
+        }
+        if (profileResult.data?.name) {
+          setOrganizerName(profileResult.data.name);
+        }
+      } catch (err) {
+        console.error('Error loading related event details:', err);
+      } finally {
+        setLoading(false);
+      }
     }
     loadEvent();
   }, [id, supabase]);
