@@ -40,7 +40,7 @@ export default function HomePage() {
             className="hero-video"
             poster="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80"
           >
-            <source src="https://videos.pexels.com/video-files/3045163/3045163-uhd_2560_1440_24fps.mp4" type="video/mp4" />
+            <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1280_720_24fps.mp4" type="video/mp4" />
           </video>
         </div>
 
