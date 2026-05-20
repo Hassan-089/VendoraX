@@ -54,7 +54,7 @@ function OrganizerApplicationsContent() {
           setOrganizerEvents(eventsData);
         }
 
-        const eventIds = eventsData?.map(e => e.id) || [];
+        const eventIds = eventsData?.map((e: any) => e.id) || [];
         if (eventIds.length === 0) {
           setLoading(false);
           return;
