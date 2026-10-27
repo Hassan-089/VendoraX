@@ -1,10 +1,18 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { createClient } from '@/lib/supabaseClient';
-import { useRouter } from 'next/navigation';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
+import { createClient } from "@/lib/supabaseClient";
+import { useRouter } from "next/navigation";
+import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
-export type UserRole = 'user' | 'organizer' | 'business' | 'admin' | null;
+export type UserRole = "user" | "organizer" | "business" | "admin" | null;
 
 export interface User {
   id: string;
@@ -28,73 +36,105 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const supabase = createClient();
 
-  const fetchSession = async () => {
-    try {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      
-      if (error || !session) {
-        setUser(null);
-        setLoading(false);
-        return;
-      }
+  const revision = useRef(0);
 
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', session.user.id)
-        .single();
-
-      if (profile) {
+  const applySession = useCallback(
+    async (session: Session | null) => {
+      const current = ++revision.current;
+      try {
+        if (!session) {
+          setUser(null);
+          return;
+        }
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("role, name")
+          .eq("id", session.user.id)
+          .single();
+        if (current !== revision.current) return;
+        if (error)
+          console.error("Unable to load account profile:", error.message);
+        const role = profile?.role;
         setUser({
           id: session.user.id,
-          email: session.user.email!,
-          role: profile.role as UserRole,
-          name: profile.name
+          email: session.user.email ?? "",
+          role: ["user", "business", "organizer", "admin"].includes(role)
+            ? (role as UserRole)
+            : "user",
+          name: profile?.name ?? undefined,
         });
+      } catch (error) {
+        if (current === revision.current) setUser(null);
+        console.error("Unable to load account:", error);
+      } finally {
+        if (current === revision.current) setLoading(false);
       }
-    } catch (err) {
-      console.error("AuthContext fetch error:", err);
-    } finally {
+    },
+    [supabase],
+  );
+
+  const fetchSession = useCallback(async () => {
+    try {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+      if (error) throw error;
+      await applySession(session);
+    } catch (error) {
+      ++revision.current;
+      setUser(null);
       setLoading(false);
+      console.error("Unable to refresh account:", error);
     }
-  };
+  }, [supabase, applySession]);
 
   useEffect(() => {
-    fetchSession();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: any, session: any) => {
-      if (session) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', session.user.id)
-          .single();
-          
-        setUser({
-          id: session.user.id,
-          email: session.user.email!,
-          role: profile?.role as UserRole || 'user',
-          name: profile?.name
-        });
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    });
-
+    let active = true;
+    const sessionRevision = revision;
+    const startupTimeout = setTimeout(() => {
+      if (active) setLoading(false);
+    }, 20000);
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    // Supabase emits INITIAL_SESSION. Defer DB work until the auth callback
+    // returns so it cannot deadlock on the client's auth lock.
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(
+      (_event: AuthChangeEvent, session: Session | null) => {
+        clearTimeout(startupTimeout);
+        ++revision.current;
+        if (!session) {
+          setUser(null);
+          setLoading(false);
+        }
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          if (active) void applySession(session);
+        }, 0);
+      },
+    );
     return () => {
+      active = false;
+      ++sessionRevision.current;
+      clearTimeout(startupTimeout);
+      clearTimeout(timer);
       subscription.unsubscribe();
     };
-  }, []);
+  }, [supabase, applySession]);
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    ++revision.current;
     setUser(null);
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout, refreshUser: fetchSession }}>
+    <AuthContext.Provider
+      value={{ user, loading, logout, refreshUser: fetchSession }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -103,7 +143,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 export function useAuthContext() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuthContext must be used within an AuthProvider');
+    throw new Error("useAuthContext must be used within an AuthProvider");
   }
   return context;
 }

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useAuthContext } from '@/context/AuthContext';
+import { useAuthContext } from "@/context/AuthContext";
 
-export type { UserRole } from '@/context/AuthContext';
+export type { UserRole } from "@/context/AuthContext";
 
 export function useAuth() {
-  const { user, loading, logout } = useAuthContext();
-  return { user, loading, logout };
+  const { user, loading, logout, refreshUser } = useAuthContext();
+  return { user, loading, logout, refreshUser };
 }

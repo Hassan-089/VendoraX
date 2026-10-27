@@ -1,0 +1,765 @@
+{
+  "schema": {
+    "status": 401,
+    "tables": [],
+    "columns": {}
+  },
+  "events": {
+    "status": 200,
+    "records": [
+      {
+        "id": "e1cf4250-a25b-4146-ae97-807559753063",
+        "title": "Lahore Eat Food Festival 2025",
+        "start_date": "2025-11-15",
+        "end_date": "2025-11-17",
+        "city": "Lahore",
+        "category": "Food & Beverage",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "db0b8150-ff7f-4800-8c53-0ece97eea8ee",
+        "title": "Pakistan Tech Summit 2025",
+        "start_date": "2025-10-20",
+        "end_date": "2025-10-22",
+        "city": "Islamabad",
+        "category": "Technology",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "19652258-d781-4d46-a7b0-cda421478e45",
+        "title": "Karachi Fashion Week 2025",
+        "start_date": "2025-12-05",
+        "end_date": "2025-12-08",
+        "city": "Karachi",
+        "category": "Fashion & Lifestyle",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "e2390ef2-8e77-4d8a-a740-49c9c1a6bd42",
+        "title": "Lahore Literary Festival 2025",
+        "start_date": "2025-09-12",
+        "end_date": "2025-09-14",
+        "city": "Lahore",
+        "category": "Arts & Culture",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "72bcbb91-5dd9-4c5c-af73-e46adcd72234",
+        "title": "Karachi Eat Festival 2025",
+        "start_date": "2025-12-20",
+        "end_date": "2025-12-22",
+        "city": "Karachi",
+        "category": "Food & Beverage",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "71ef10a8-899b-4f2a-9a03-cdb7fe406b4f",
+        "title": "Islamabad Business Conclave 2025",
+        "start_date": "2025-10-10",
+        "end_date": "2025-10-11",
+        "city": "Islamabad",
+        "category": "Business & Corporate",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "f474aa7b-5394-4d43-a223-1977f0f1ac48",
+        "title": "DHA Wedding Expo Lahore 2025",
+        "start_date": "2025-11-01",
+        "end_date": "2025-11-03",
+        "city": "Lahore",
+        "category": "Weddings & Lifestyle",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "b91c88aa-20db-4788-be92-c3f11dd6c846",
+        "title": "Pakistan Auto Show 2025",
+        "start_date": "2025-11-22",
+        "end_date": "2025-11-24",
+        "city": "Lahore",
+        "category": "Automotive",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "25594fbd-e4ba-4cbb-aa1c-68df65b4d585",
+        "title": "Islamabad Music Festival 2025",
+        "start_date": "2025-10-25",
+        "end_date": "2025-10-26",
+        "city": "Islamabad",
+        "category": "Music & Entertainment",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "91854a9f-17fb-4934-82cf-a0f290ee2a79",
+        "title": "Faisalabad Textile & Trade Expo 2025",
+        "start_date": "2025-09-28",
+        "end_date": "2025-09-30",
+        "city": "Faisalabad",
+        "category": "Trade & Industry",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "14e67484-7ee2-4f4e-9b0d-d05e816209df",
+        "title": "Karachi International Book Fair 2025",
+        "start_date": "2025-11-10",
+        "end_date": "2025-11-13",
+        "city": "Karachi",
+        "category": "Education & Literature",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "d802e980-4338-4812-83a3-62c2c620ea52",
+        "title": "Peshawar Cultural Mela 2025",
+        "start_date": "2025-10-05",
+        "end_date": "2025-10-07",
+        "city": "Peshawar",
+        "category": "Culture & Heritage",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "0aef7a13-05d9-4794-9f83-b317d6b2da14",
+        "title": "Pakistan Property Expo 2025",
+        "start_date": "2025-12-12",
+        "end_date": "2025-12-14",
+        "city": "Lahore",
+        "category": "Real Estate",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "ddce17e8-a09a-46d7-a78c-898b6909200b",
+        "title": "Lahore Startup Weekend 2025",
+        "start_date": "2025-09-19",
+        "end_date": "2025-09-21",
+        "city": "Lahore",
+        "category": "Technology",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      },
+      {
+        "id": "fe2729c9-0a8f-4200-91a5-96d61c2d3970",
+        "title": "Karachi Kids Carnival 2025",
+        "start_date": "2025-12-25",
+        "end_date": "2025-12-27",
+        "city": "Karachi",
+        "category": "Family & Entertainment",
+        "organizer_id": "a4c4b936-3fca-406f-9980-95f0f62fcfd3"
+      }
+    ]
+  },
+  "packages": {
+    "status": 200,
+    "records": [
+      {
+        "id": "48a51602-db7f-40ef-81b0-0eb4c7fbd50b",
+        "event_id": "9a6e6c79-f895-487a-9aa5-aa0b0629ed0f",
+        "name": "jjfg",
+        "price": 59,
+        "size": "10x10",
+        "perks": []
+      },
+      {
+        "id": "4e17ff7e-f1b1-416b-a73b-1f99faab1f48",
+        "event_id": "65e44c55-6266-4c61-978c-d29413ce4f80",
+        "name": "123",
+        "price": 500,
+        "size": "123",
+        "perks": [
+          "2"
+        ]
+      },
+      {
+        "id": "a128f7f1-f743-46b4-b636-3fd5b1c095d1",
+        "event_id": "65e44c55-6266-4c61-978c-d29413ce4f80",
+        "name": "123",
+        "price": 123,
+        "size": "123",
+        "perks": [
+          "123"
+        ]
+      },
+      {
+        "id": "ec8e3980-2d89-4261-8a0b-e89bfb028f24",
+        "event_id": "e1cf4250-a25b-4146-ae97-807559753063",
+        "name": "Standard Food Stall",
+        "price": 35000,
+        "size": "10x10 ft",
+        "perks": [
+          "1 Table",
+          "2 Chairs",
+          "Electricity",
+          "Event Listing"
+        ]
+      },
+      {
+        "id": "0bd4361f-ba18-41c8-a104-5f860105a887",
+        "event_id": "e1cf4250-a25b-4146-ae97-807559753063",
+        "name": "Premium Food Pavilion",
+        "price": 85000,
+        "size": "20x15 ft",
+        "perks": [
+          "3 Tables",
+          "6 Chairs",
+          "Premium Location",
+          "LED Screen",
+          "Electricity",
+          "Social Media Feature"
+        ]
+      },
+      {
+        "id": "248780ef-9725-4dc4-9438-3d14dd92c5c2",
+        "event_id": "e1cf4250-a25b-4146-ae97-807559753063",
+        "name": "Title Sponsor Package",
+        "price": 500000,
+        "size": "30x30 ft",
+        "perks": [
+          "Main Stage Branding",
+          "VIP Lounge Access",
+          "10 Passes",
+          "Logo on All Marketing",
+          "Dedicated Social Media Campaign"
+        ]
+      },
+      {
+        "id": "8eb90575-d2ef-4eca-992d-f33053b01fae",
+        "event_id": "db0b8150-ff7f-4800-8c53-0ece97eea8ee",
+        "name": "Startup Booth",
+        "price": 50000,
+        "size": "8x8 ft",
+        "perks": [
+          "1 Table",
+          "2 Chairs",
+          "WiFi",
+          "Event Guide Listing"
+        ]
+      },
+      {
+        "id": "eb30dffb-cabe-4e74-91f8-27429b7714c3",
+        "event_id": "db0b8150-ff7f-4800-8c53-0ece97eea8ee",
+        "name": "Corporate Pavilion",
+        "price": 200000,
+        "size": "20x20 ft",
+        "perks": [
+          "6 Passes",
+          "Premium Floor Location",
+          "Lead Scanner",
+          "Logo on Stage Screen",
+          "Dedicated Power"
+        ]
+      },
+      {
+        "id": "d79c34d8-40dd-4d2f-b0a5-85d3ad6c3a7c",
+        "event_id": "db0b8150-ff7f-4800-8c53-0ece97eea8ee",
+        "name": "Innovation Partner",
+        "price": 750000,
+        "size": "40x30 ft",
+        "perks": [
+          "Keynote Slot",
+          "Full Branding",
+          "20 VIP Passes",
+          "Media Coverage",
+          "App Banner Ad"
+        ]
+      },
+      {
+        "id": "55b72eab-9718-420c-8d07-13a72b0b1f93",
+        "event_id": "19652258-d781-4d46-a7b0-cda421478e45",
+        "name": "Boutique Pop-Up",
+        "price": 75000,
+        "size": "10x10 ft",
+        "perks": [
+          "Mannequin Display",
+          "Lighting",
+          "2 Passes",
+          "Event Catalogue Listing"
+        ]
+      },
+      {
+        "id": "4ff99ad4-3636-4df4-a16b-14ccd737d83b",
+        "event_id": "19652258-d781-4d46-a7b0-cda421478e45",
+        "name": "Designer Showcase",
+        "price": 200000,
+        "size": "20x15 ft",
+        "perks": [
+          "Runway Slot",
+          "6 Passes",
+          "VIP Area Access",
+          "Professional Photography",
+          "LED Screen"
+        ]
+      },
+      {
+        "id": "e2cb7ccd-c13b-4b6d-b91d-93f1a55a2eb1",
+        "event_id": "19652258-d781-4d46-a7b0-cda421478e45",
+        "name": "Platinum Sponsor",
+        "price": 1000000,
+        "size": "Full Branding",
+        "perks": [
+          "Title Naming Rights",
+          "Main Runway Branding",
+          "25 VIP Passes",
+          "Red Carpet Access",
+          "Exclusive Media Wall"
+        ]
+      },
+      {
+        "id": "44b03728-d70e-4b3b-8c03-c7e64016a4d6",
+        "event_id": "e2390ef2-8e77-4d8a-a740-49c9c1a6bd42",
+        "name": "Book Stall",
+        "price": 25000,
+        "size": "8x8 ft",
+        "perks": [
+          "1 Bookshelf Unit",
+          "2 Chairs",
+          "Event Programme Listing"
+        ]
+      },
+      {
+        "id": "788ee99f-27dc-4b5c-8f63-14d65f5a7aec",
+        "event_id": "e2390ef2-8e77-4d8a-a740-49c9c1a6bd42",
+        "name": "Publisher Pavilion",
+        "price": 65000,
+        "size": "15x12 ft",
+        "perks": [
+          "Author Signing Area",
+          "4 Passes",
+          "Premium Location",
+          "Social Media Feature"
+        ]
+      },
+      {
+        "id": "4af019fb-a941-4c0e-8706-575e1e8e2ef3",
+        "event_id": "e2390ef2-8e77-4d8a-a740-49c9c1a6bd42",
+        "name": "Cultural Partner",
+        "price": 300000,
+        "size": "25x20 ft",
+        "perks": [
+          "Panel Sponsorship",
+          "Stage Branding",
+          "10 VIP Passes",
+          "Logo on All Print Material"
+        ]
+      },
+      {
+        "id": "da2011a6-1c35-4aa8-9ced-97e1bf5cd148",
+        "event_id": "72bcbb91-5dd9-4c5c-af73-e46adcd72234",
+        "name": "Food Cart",
+        "price": 20000,
+        "size": "8x6 ft",
+        "perks": [
+          "Electricity",
+          "1 Table",
+          "Event Listing"
+        ]
+      },
+      {
+        "id": "404bd789-58f2-4a69-b379-eba417e4d509",
+        "event_id": "72bcbb91-5dd9-4c5c-af73-e46adcd72234",
+        "name": "Food Stall",
+        "price": 45000,
+        "size": "12x10 ft",
+        "perks": [
+          "2 Tables",
+          "4 Chairs",
+          "Electricity",
+          "Water Supply",
+          "Event Guide Feature"
+        ]
+      },
+      {
+        "id": "9f4e8155-32c7-44d9-9442-0a8af8e9edeb",
+        "event_id": "72bcbb91-5dd9-4c5c-af73-e46adcd72234",
+        "name": "Food Zone Sponsor",
+        "price": 350000,
+        "size": "25x20 ft",
+        "perks": [
+          "Zone Naming Rights",
+          "Logo on Entrance",
+          "8 Passes",
+          "Social Media Takeover",
+          "Celebrity Chef Meet"
+        ]
+      },
+      {
+        "id": "747ddccf-7e39-4983-8ee6-5d7c24fabe46",
+        "event_id": "71ef10a8-899b-4f2a-9a03-cdb7fe406b4f",
+        "name": "Exhibition Booth",
+        "price": 100000,
+        "size": "10x10 ft",
+        "perks": [
+          "2 Delegate Passes",
+          "WiFi",
+          "Brochure Distribution",
+          "Event Guide Listing"
+        ]
+      },
+      {
+        "id": "8aeb3b04-ae5f-4143-ae63-06785de8419c",
+        "event_id": "71ef10a8-899b-4f2a-9a03-cdb7fe406b4f",
+        "name": "Diamond Partner",
+        "price": 500000,
+        "size": "20x20 ft",
+        "perks": [
+          "Keynote Introduction",
+          "10 VIP Passes",
+          "Gala Dinner Table",
+          "Full Branding",
+          "Media Interviews"
+        ]
+      },
+      {
+        "id": "e7cb9882-be6c-4b58-8619-a309d76844cd",
+        "event_id": "f474aa7b-5394-4d43-a223-1977f0f1ac48",
+        "name": "Vendor Booth",
+        "price": 40000,
+        "size": "10x8 ft",
+        "perks": [
+          "Table & Display",
+          "2 Passes",
+          "Catalogue Listing"
+        ]
+      },
+      {
+        "id": "4a096d02-b8c4-4f00-aeb4-8189407a5781",
+        "event_id": "f474aa7b-5394-4d43-a223-1977f0f1ac48",
+        "name": "Premium Showcase",
+        "price": 120000,
+        "size": "20x15 ft",
+        "perks": [
+          "Runway Feature",
+          "6 Passes",
+          "VIP Parking",
+          "Social Media Promotion",
+          "LED Display"
+        ]
+      },
+      {
+        "id": "bd9cc33c-70fe-4f52-a275-d0496cee0540",
+        "event_id": "f474aa7b-5394-4d43-a223-1977f0f1ac48",
+        "name": "Bridal Title Sponsor",
+        "price": 600000,
+        "size": "30x25 ft",
+        "perks": [
+          "Main Stage Branding",
+          "All Marketing Collateral",
+          "15 VIP Passes",
+          "Exclusive Lounge",
+          "Media Coverage"
+        ]
+      },
+      {
+        "id": "cea02af7-0285-44e0-bc74-5f26665518d0",
+        "event_id": "b91c88aa-20db-4788-be92-c3f11dd6c846",
+        "name": "Auto Parts Booth",
+        "price": 30000,
+        "size": "10x10 ft",
+        "perks": [
+          "Display Table",
+          "2 Passes",
+          "Electricity",
+          "Catalogue Listing"
+        ]
+      },
+      {
+        "id": "4924feee-3cdb-440f-9cd3-c2c74dac6409",
+        "event_id": "b91c88aa-20db-4788-be92-c3f11dd6c846",
+        "name": "Car Display Zone",
+        "price": 150000,
+        "size": "30x25 ft",
+        "perks": [
+          "Vehicle Display Platform",
+          "6 Passes",
+          "Spotlight Lighting",
+          "Test Drive Route Access",
+          "PA Announcements"
+        ]
+      },
+      {
+        "id": "2b51f7be-6c6c-41bf-a763-6e72af6701a0",
+        "event_id": "b91c88aa-20db-4788-be92-c3f11dd6c846",
+        "name": "Auto Title Partner",
+        "price": 800000,
+        "size": "50x40 ft",
+        "perks": [
+          "Main Hall Naming",
+          "Grand Entrance Branding",
+          "20 VIP Passes",
+          "Press Conference Slot",
+          "Full Digital Campaign"
+        ]
+      },
+      {
+        "id": "4ab4f123-a86e-448d-97a7-043fc0425d8c",
+        "event_id": "25594fbd-e4ba-4cbb-aa1c-68df65b4d585",
+        "name": "Brand Activation Stall",
+        "price": 60000,
+        "size": "12x10 ft",
+        "perks": [
+          "Brand Sampling Area",
+          "4 Passes",
+          "Electricity",
+          "Music Between Sets Shoutout"
+        ]
+      },
+      {
+        "id": "6415a2ad-ce30-4438-9120-58a8523bf8e0",
+        "event_id": "25594fbd-e4ba-4cbb-aa1c-68df65b4d585",
+        "name": "Stage Sponsor",
+        "price": 400000,
+        "size": "20x20 ft",
+        "perks": [
+          "Stage Naming Rights",
+          "10 VIP Passes",
+          "Backstage Access",
+          "Artist Meet & Greet",
+          "Full Branding"
+        ]
+      },
+      {
+        "id": "7bf5ec50-e00c-48fc-8d3c-4750322b9d2f",
+        "event_id": "25594fbd-e4ba-4cbb-aa1c-68df65b4d585",
+        "name": "Beverage Partner",
+        "price": 250000,
+        "size": "15x15 ft",
+        "perks": [
+          "Exclusive Beverage Rights",
+          "8 Passes",
+          "Bar Setup Area",
+          "Cup Branding",
+          "Social Media Feature"
+        ]
+      },
+      {
+        "id": "83963180-1c97-4991-98b2-df7ba4395f0e",
+        "event_id": "91854a9f-17fb-4934-82cf-a0f290ee2a79",
+        "name": "Standard Trade Booth",
+        "price": 40000,
+        "size": "10x10 ft",
+        "perks": [
+          "Display Area",
+          "2 Passes",
+          "WiFi",
+          "B2B Meeting Schedule"
+        ]
+      },
+      {
+        "id": "d982843a-f2a6-4397-922d-1e2e0f752c65",
+        "event_id": "91854a9f-17fb-4934-82cf-a0f290ee2a79",
+        "name": "Machinery Demo Zone",
+        "price": 150000,
+        "size": "25x20 ft",
+        "perks": [
+          "Heavy Equipment Space",
+          "6 Passes",
+          "Power Supply (3-Phase)",
+          "Catalogue Premium Listing"
+        ]
+      },
+      {
+        "id": "aa4846d6-ebff-4dda-8c8f-fd79aaf68ffb",
+        "event_id": "91854a9f-17fb-4934-82cf-a0f290ee2a79",
+        "name": "Industry Partner",
+        "price": 400000,
+        "size": "30x25 ft",
+        "perks": [
+          "Panel Sponsorship",
+          "Award Ceremony Branding",
+          "12 VIP Passes",
+          "International Buyer Matchmaking"
+        ]
+      },
+      {
+        "id": "ffed9c47-1179-4590-a0b3-1d187065f3f0",
+        "event_id": "14e67484-7ee2-4f4e-9b0d-d05e816209df",
+        "name": "Publisher Stall",
+        "price": 25000,
+        "size": "8x8 ft",
+        "perks": [
+          "Bookshelf Display",
+          "2 Passes",
+          "Event Listing"
+        ]
+      },
+      {
+        "id": "e49d4903-2a52-4e46-bcbf-b0822bbfa0c5",
+        "event_id": "14e67484-7ee2-4f4e-9b0d-d05e816209df",
+        "name": "Premium Publisher",
+        "price": 60000,
+        "size": "15x12 ft",
+        "perks": [
+          "Author Signing Table",
+          "4 Passes",
+          "Premium Floor Location",
+          "PA Announcements"
+        ]
+      },
+      {
+        "id": "18b9d097-29b2-4097-b3a5-9b3e23f32405",
+        "event_id": "14e67484-7ee2-4f4e-9b0d-d05e816209df",
+        "name": "Education Partner",
+        "price": 200000,
+        "size": "20x20 ft",
+        "perks": [
+          "Workshop Room Access",
+          "8 VIP Passes",
+          "Logo on Bags",
+          "Full Social Media Campaign"
+        ]
+      },
+      {
+        "id": "55c11b9e-d18c-43f1-be45-5f7c748d184d",
+        "event_id": "d802e980-4338-4812-83a3-62c2c620ea52",
+        "name": "Artisan Stall",
+        "price": 15000,
+        "size": "8x6 ft",
+        "perks": [
+          "Display Table",
+          "2 Passes",
+          "Event Listing"
+        ]
+      },
+      {
+        "id": "73b14b40-027d-4a33-ad4f-0a5a07a2f1c4",
+        "event_id": "d802e980-4338-4812-83a3-62c2c620ea52",
+        "name": "Handicraft Pavilion",
+        "price": 45000,
+        "size": "15x12 ft",
+        "perks": [
+          "Live Demo Area",
+          "4 Passes",
+          "Photography Coverage",
+          "Premium Location"
+        ]
+      },
+      {
+        "id": "0d4fc889-fbd0-4e26-a730-4603ba7fcdab",
+        "event_id": "d802e980-4338-4812-83a3-62c2c620ea52",
+        "name": "Heritage Partner",
+        "price": 150000,
+        "size": "20x20 ft",
+        "perks": [
+          "Stage Sponsorship",
+          "Cultural Award Naming",
+          "8 VIP Passes",
+          "Full Media Coverage"
+        ]
+      },
+      {
+        "id": "ccacc5a4-7ffc-408d-bda7-c762fa7547db",
+        "event_id": "0aef7a13-05d9-4794-9f83-b317d6b2da14",
+        "name": "Developer Booth",
+        "price": 60000,
+        "size": "12x10 ft",
+        "perks": [
+          "Model Display Area",
+          "4 Passes",
+          "LED Screen",
+          "Brochure Distribution"
+        ]
+      },
+      {
+        "id": "0a2716bd-78ed-434f-9b77-524207815237",
+        "event_id": "0aef7a13-05d9-4794-9f83-b317d6b2da14",
+        "name": "Premium Developer",
+        "price": 200000,
+        "size": "25x20 ft",
+        "perks": [
+          "Scale Model Platform",
+          "8 Passes",
+          "VIP Lounge",
+          "PA Announcements",
+          "Social Media Feature"
+        ]
+      },
+      {
+        "id": "7b982a72-5c53-445b-947f-9a3e5a6cd61d",
+        "event_id": "0aef7a13-05d9-4794-9f83-b317d6b2da14",
+        "name": "Platinum Exhibitor",
+        "price": 500000,
+        "size": "40x30 ft",
+        "perks": [
+          "Grand Entrance Branding",
+          "Keynote Slot",
+          "15 VIP Passes",
+          "Helicopter Tour Prize Sponsorship"
+        ]
+      },
+      {
+        "id": "242407a6-9fa7-495d-8c28-f64c285c4377",
+        "event_id": "ddce17e8-a09a-46d7-a78c-898b6909200b",
+        "name": "Mentor Booth",
+        "price": 25000,
+        "size": "8x6 ft",
+        "perks": [
+          "Brand Display",
+          "2 Passes",
+          "Mentorship Session Slot"
+        ]
+      },
+      {
+        "id": "a4f785bd-e416-4a5f-b041-5d6d2c203aea",
+        "event_id": "ddce17e8-a09a-46d7-a78c-898b6909200b",
+        "name": "Innovation Sponsor",
+        "price": 150000,
+        "size": "15x12 ft",
+        "perks": [
+          "Category Naming Rights",
+          "6 VIP Passes",
+          "Judge Panel Seat",
+          "Logo on Certificates",
+          "Social Media Campaign"
+        ]
+      },
+      {
+        "id": "be2349d2-eb1e-49d7-8da7-a5943590b277",
+        "event_id": "fe2729c9-0a8f-4200-91a5-96d61c2d3970",
+        "name": "Activity Stall",
+        "price": 20000,
+        "size": "8x8 ft",
+        "perks": [
+          "Table & Chairs",
+          "2 Passes",
+          "Event Listing",
+          "Balloon Decoration"
+        ]
+      },
+      {
+        "id": "01bca721-9719-4c92-8d96-439a38a68164",
+        "event_id": "fe2729c9-0a8f-4200-91a5-96d61c2d3970",
+        "name": "Fun Zone Sponsor",
+        "price": 100000,
+        "size": "20x15 ft",
+        "perks": [
+          "Zone Naming",
+          "Character Mascot Slot",
+          "6 Passes",
+          "PA Shoutouts",
+          "Social Media Promotion"
+        ]
+      },
+      {
+        "id": "39df7717-15c1-43a3-baee-0499ac4d86c1",
+        "event_id": "fe2729c9-0a8f-4200-91a5-96d61c2d3970",
+        "name": "Carnival Title Partner",
+        "price": 400000,
+        "size": "30x25 ft",
+        "perks": [
+          "Gate Branding",
+          "All Wristband Branding",
+          "15 VIP Passes",
+          "Main Stage Sponsorship",
+          "Exclusive Media Coverage"
+        ]
+      }
+    ]
+  },
+  "anonymousVisibility": [
+    {
+      "table": "profiles",
+      "status": 200,
+      "range": "*/0"
+    },
+    {
+      "table": "stall_applications",
+      "status": 200,
+      "range": "*/0"
+    }
+  ]
+}

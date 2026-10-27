@@ -1,69 +1,88 @@
-'use client';
-
-import React from 'react';
-import Link from 'next/link';
-import { useAuth } from '@/hooks/useAuth';
-import { Button } from '@/components/ui/Button';
-
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, Menu } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+const links = [
+  { label: "Explore events", href: "/events" },
+  { label: "For organizers", href: "/for-organizers" },
+  { label: "For businesses", href: "/for-businesses" },
+];
 export function Navbar() {
-  const { user, logout, loading } = useAuth();
-
-  const getDashboardLink = () => {
-    switch (user?.role) {
-      case 'organizer':
-        return '/organizer/dashboard';
-      case 'business':
-        return '/business/dashboard';
-      case 'admin':
-        return '/admin/dashboard';
-      case 'user':
-      default:
-        return '/user/dashboard';
-    }
-  };
-
+  const { user, loading, logout } = useAuth();
+  const pathname = usePathname();
+  const [error, setError] = useState("");
   return (
-    <nav className="sticky top-0 z-40 w-full backdrop-blur-lg bg-background/80 border-b border-border">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="font-bold text-2xl tracking-tighter text-primary">
-            VendoraX
-          </Link>
-          <div className="hidden md:flex items-center gap-4 text-sm font-medium">
-            <Link href="/events" className="hover:text-primary transition-colors">
-              Explore Events
+    <header className="site-nav">
+      <div className="nav-inner">
+        <Link href="/" className="wordmark" aria-label="VendoraX home">
+          <span className="brand-mark" aria-hidden="true">
+            v
+          </span>
+          VendoraX<span className="text-primary">.</span>
+        </Link>
+        <nav aria-label="Main navigation" className="main-nav">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
+              {link.label}
             </Link>
-            <Link href="/events" className="hover:text-primary transition-colors">
-              Categories
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4">
-          {loading ? (
-            <div className="flex gap-4">
-              <div className="w-20 h-10 bg-muted animate-pulse rounded-md"></div>
-              <div className="w-20 h-10 bg-muted animate-pulse rounded-md"></div>
-            </div>
-          ) : user ? (
+          ))}
+        </nav>
+        <div className="nav-account">
+          {user ? (
             <>
-              <Link href={getDashboardLink()}>
-                <Button variant="ghost">Dashboard</Button>
-              </Link>
-              <Button variant="outline" onClick={logout}>Logout</Button>
+              <Link href={`/${user.role || "user"}/dashboard`}>Dashboard</Link>
+              <button
+                onClick={() => {
+                  setError("");
+                  void logout().catch(() =>
+                    setError("Unable to sign out. Please try again."),
+                  );
+                }}
+              >
+                Sign out
+              </button>
             </>
           ) : (
             <>
-              <Link href="/login">
-                <Button variant="ghost">Log in</Button>
-              </Link>
-              <Link href="/signup">
-                <Button variant="primary">Sign up</Button>
+              <Link href="/login">Log in</Link>
+              <Link className="action action-primary" href="/signup">
+                Get started <ArrowUpRight size={15} />
               </Link>
             </>
           )}
+          {loading && (
+            <span className="sr-only" role="status">
+              Checking your account
+            </span>
+          )}
         </div>
       </div>
-    </nav>
+      {error && (
+        <p role="alert" className="text-center text-sm text-red-700 pb-2">
+          {error}
+        </p>
+      )}
+      <details key={pathname} className="mobile-menu">
+        <summary>
+          Explore VendoraX
+          <Menu size={17} />
+        </summary>
+        <nav aria-label="Mobile navigation">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/categories">Browse categories</Link>
+          <Link href="/help">Help centre</Link>
+        </nav>
+      </details>
+    </header>
   );
 }

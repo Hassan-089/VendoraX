@@ -1,122 +1,118 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import { DashboardLayout } from '@/components/layout/DashboardLayout';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import Link from 'next/link';
-import { PlusCircle } from 'lucide-react';
-import { createClient } from '@/lib/supabaseClient';
-
-interface Event {
-  id: string;
-  title: string;
-  city: string;
-  start_date: string;
-  category: string | null;
-}
-
-export default function OrganizerDashboardPage() {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
-  const supabase = createClient();
-
-  useEffect(() => {
-    async function loadDashboardData() {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (session) {
-        // Fetch events created by this organizer
-        const { data: fetchedEvents, error } = await supabase
-          .from('events')
-          .select('id, title, city, start_date, category')
-          .eq('organizer_id', session.user.id)
-          .order('created_at', { ascending: false });
-
-        if (!error && fetchedEvents) {
-          setEvents(fetchedEvents);
-        }
-      }
-      setLoading(false);
-    }
-    
-    loadDashboardData();
-  }, [supabase]);
-
+import Link from "next/link";
+import { requireAccount } from "@/lib/server-auth";
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
+import { formatEventDate, pakistanToday } from "@/lib/marketplace";
+export default async function Page() {
+  const account = await requireAccount("organizer");
+  const result = await account.db
+    .from("events")
+    .select("id,title,city,start_date,status")
+    .eq("organizer_id", account.user.id)
+    .order("created_at", { ascending: false })
+    .limit(500);
+  const events = result.data || [];
+  const ids = events.map((event) => event.id);
+  const applications = ids.length
+    ? await account.db
+        .from("stall_applications")
+        .select("id", { count: "exact", head: true })
+        .in("event_id", ids)
+        .eq("status", "pending")
+    : null;
   return (
-    <DashboardLayout allowedRoles={['organizer']}>
-      <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">Organizer Dashboard</h1>
-            <p className="text-muted-foreground">Manage your events and applications.</p>
-          </div>
-          <Link href="/organizer/create-event">
-            <Button className="gap-2">
-              <PlusCircle className="w-4 h-4" /> Create Event
-            </Button>
-          </Link>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Total Events</CardDescription>
-              <CardTitle className="text-4xl">
-                {loading ? '...' : events.length} <span className="text-sm text-muted-foreground font-normal">/ 5 Limit</span>
-              </CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Total Views</CardDescription>
-              <CardTitle className="text-4xl">0</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Stall Applications</CardDescription>
-              <CardTitle className="text-4xl">0</CardTitle>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader className="pb-2">
-              <CardDescription>Revenue</CardDescription>
-              <CardTitle className="text-4xl">$0</CardTitle>
-            </CardHeader>
-          </Card>
-        </div>
-
-        <h2 className="text-xl font-bold tracking-tight mt-10 mb-4">Recent Events</h2>
-        <Card>
-          <CardContent className="p-0">
-            {events.length === 0 && !loading && (
-              <div className="p-8 text-center text-muted-foreground">
-                You haven't created any events yet!
+    <DashboardLayout allowedRoles={["organizer"]}>
+      <div className="page-intro">
+        <p className="eyebrow">MAKE SOMETHING HAPPEN</p>
+        <h1>Your organizer workspace.</h1>
+        <p>Keep your events and applications in view.</p>
+      </div>
+      <div className="flex gap-3 flex-wrap mb-8">
+        <Link href="/organizer/create-event" className="action action-primary">
+          Create an event
+        </Link>
+        <Link href="/organizer/applications" className="action action-outline">
+          Review applications
+        </Link>
+      </div>
+      {result.error ? (
+        <p role="alert" className="notice">
+          Your event activity is unavailable. Please try again.
+        </p>
+      ) : (
+        <>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-9">
+            {[
+              ["Events listed", events.length],
+              [
+                "Published",
+                events.filter((event) => event.status === "approved").length,
+              ],
+              [
+                "Upcoming",
+                events.filter(
+                  (event) =>
+                    event.status === "approved" &&
+                    event.start_date >= pakistanToday(),
+                ).length,
+              ],
+              [
+                "Awaiting your review",
+                applications?.error ? "Unavailable" : applications?.count || 0,
+              ],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                className="p-5 bg-white border border-border rounded-lg"
+              >
+                <p className="text-xs text-muted-foreground">{label}</p>
+                <p className="text-3xl font-semibold mt-4">{value}</p>
               </div>
-            )}
-            <div className="divide-y divide-border">
-              {events.map((evt) => (
-                <div key={evt.id} className="flex items-center justify-between p-6">
+            ))}
+          </div>
+          <div className="listing-heading">
+            <h2>Recent events</h2>
+            <Link className="text-link" href="/organizer/my-events">
+              View all
+            </Link>
+          </div>
+          {!events.length ? (
+            <div className="empty-state">
+              <h2>Your first event starts with an idea</h2>
+              <p>
+                Create an event and add the details businesses and visitors
+                need.
+              </p>
+            </div>
+          ) : (
+            <div className="divide-y divide-border border border-border bg-white rounded-lg">
+              {events.slice(0, 5).map((event) => (
+                <div
+                  className="p-5 flex flex-wrap justify-between gap-4"
+                  key={event.id}
+                >
                   <div>
-                    <h3 className="font-semibold">{evt.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {evt.city}
-                      {evt.category && (
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                          {evt.category}
-                        </span>
-                      )}
-                      {' • '}{evt.start_date}
+                    <h3 className="font-semibold">{event.title}</h3>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      {event.city} · {formatEventDate(event.start_date)} ·{" "}
+                      {event.status === "approved"
+                        ? "Published"
+                        : event.status === "pending"
+                          ? "Awaiting platform review"
+                          : event.status}
                     </p>
                   </div>
-                  <Button variant="outline" size="sm">Manage</Button>
+                  <Link
+                    className="text-link"
+                    href={`/organizer/applications?eventId=${event.id}`}
+                  >
+                    Applications
+                  </Link>
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          )}
+        </>
+      )}
     </DashboardLayout>
   );
 }

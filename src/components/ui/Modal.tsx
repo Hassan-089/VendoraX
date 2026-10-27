@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { X } from 'lucide-react';
+import React, { useEffect, useId, useRef } from "react";
+import { X } from "lucide-react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,42 +11,50 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    const element = dialog.current;
+    if (!isOpen || !element) return;
+    const previousOverflow = document.body.style.overflow;
+    element.showModal();
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = 'unset';
+      element.close();
+      document.body.style.overflow = previousOverflow;
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
-        onClick={onClose}
-      />
-      
-      <div className="relative z-50 w-full max-w-lg rounded-xl bg-background p-6 shadow-lg sm:p-8 animate-in fade-in zoom-in-95 duration-200">
+    <dialog
+      ref={dialog}
+      aria-labelledby={titleId}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+      className="fixed inset-0 m-auto w-[calc(100%-2rem)] max-w-lg max-h-[90dvh] overflow-y-auto rounded-xl border-0 bg-background text-foreground p-0 shadow-lg backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+    >
+      <div className="p-6 sm:p-8" onClick={(event) => event.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold">{title}</h2>
-          <button 
-            onClick={onClose} 
+          <h2 id={titleId} className="text-xl font-semibold">
+            {title}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
             className="rounded-full p-1 hover:bg-muted transition-colors"
           >
             <X className="h-5 w-5 opacity-70" />
             <span className="sr-only">Close</span>
           </button>
         </div>
-        
-        <div className="mt-4">
-          {children}
-        </div>
+        <div className="mt-4">{children}</div>
       </div>
-    </div>
+    </dialog>
   );
 }

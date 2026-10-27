@@ -1,8 +1,15 @@
-import React from 'react';
-import Link from 'next/link';
-import { SignupForm } from '@/components/auth/SignupForm';
+import React from "react";
+import Link from "next/link";
+import { SignupForm } from "@/components/auth/SignupForm";
 
-export default function SignupPage() {
+export default async function SignupPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ role?: string }>;
+}) {
+  const { role } = await searchParams;
+  const initialRole =
+    role === "organizer" || role === "business" ? role : "user";
   return (
     <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-md w-full space-y-8 bg-card p-8 rounded-2xl shadow-sm border border-border">
@@ -11,13 +18,16 @@ export default function SignupPage() {
             Create an account
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Already have an account?{' '}
-            <Link href="/login" className="font-medium text-primary hover:text-primary/80">
+            Already have an account?{" "}
+            <Link
+              href="/login"
+              className="font-medium text-primary hover:text-primary/80"
+            >
               Log in
             </Link>
           </p>
         </div>
-        <SignupForm />
+        <SignupForm initialRole={initialRole} />
       </div>
     </div>
   );

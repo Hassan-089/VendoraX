@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import { LoginForm } from '@/components/auth/LoginForm';
+import React from "react";
+import Link from "next/link";
+import { LoginForm } from "@/components/auth/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -11,8 +11,11 @@ export default function LoginPage() {
             Welcome back
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Don't have an account?{' '}
-            <Link href="/signup" className="font-medium text-primary hover:text-primary/80">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/signup"
+              className="font-medium text-primary hover:text-primary/80"
+            >
               Sign up
             </Link>
           </p>

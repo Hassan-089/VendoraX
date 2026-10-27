@@ -1,255 +1,341 @@
-import React from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { FeaturedEvents } from '@/components/events/FeaturedEvents';
-import { BlogSection } from '@/components/home/BlogSection';
-import { CaseStudiesSection } from '@/components/home/CaseStudiesSection';
-import { FAQSection } from '@/components/home/FAQSection';
-import { StatsSection } from '@/components/home/StatsSection';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'VendoraX — Pakistan\'s #1 Event Sponsorship & Stall Marketplace',
+import Link from "next/link";
+import Image from "next/image";
+import { Suspense } from "react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Utensils,
+  ShoppingBag,
+  Briefcase,
+  Laptop,
+  Palette,
+  GraduationCap,
+  MapPin,
+  Search,
+  ClipboardCheck,
+  Store,
+  Check,
+  CalendarDays,
+} from "lucide-react";
+import { EventFilters } from "@/components/marketplace/EventFilters";
+import { EventResults } from "@/components/marketplace/EventResults";
+import { categories, cities } from "@/lib/marketplace";
+import { BrandLogo } from "@/components/marketplace/BrandLogo";
+export const dynamic = "force-dynamic";
+export const metadata = {
+  title: "VendoraX | Discover events. Find your stall.",
   description:
-    'Discover popular events in Lahore, Karachi, and Islamabad. VendoraX connects event organizers with brands for sponsorships, stall bookings, and digital packages. Join 500+ organizers today.',
-  keywords: [
-    'popular events in lahore',
-    'popular events in karachi',
-    'popular events in islamabad',
-    'event sponsorship pakistan',
-    'event organizer lahore',
-    'stall booking events pakistan',
-    'brand sponsorship events',
-    'vendorax',
-  ],
+    "Explore events across Pakistan, discover stall opportunities and connect your business with event organizers.",
 };
-
+const icons = [
+  Utensils,
+  ShoppingBag,
+  Briefcase,
+  Laptop,
+  Palette,
+  GraduationCap,
+];
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* ===== HERO SECTION ===== */}
-      <section className="hero-section relative px-4 py-32 md:py-44 overflow-hidden">
-        {/* Video Background */}
-        <div className="hero-video-wrapper">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="hero-video"
-            poster="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80"
-          >
-            <source src="https://videos.pexels.com/video-files/3045163/3045163-hd_1280_720_24fps.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        {/* Dark cinematic overlay */}
-        <div className="hero-overlay" />
-        <div className="hero-overlay-gradient" />
-
-        {/* Animated floating light particles */}
-        <div className="hero-particles">
-          <div className="hero-particle hero-particle-1" />
-          <div className="hero-particle hero-particle-2" />
-          <div className="hero-particle hero-particle-3" />
-          <div className="hero-particle hero-particle-4" />
-          <div className="hero-particle hero-particle-5" />
-          <div className="hero-particle hero-particle-6" />
-          <div className="hero-particle hero-particle-7" />
-          <div className="hero-particle hero-particle-8" />
-        </div>
-
-        {/* Animated glow rings */}
-        <div className="hero-glow-ring hero-glow-ring-1" />
-        <div className="hero-glow-ring hero-glow-ring-2" />
-
-        <div className="container mx-auto text-center max-w-5xl relative z-10">
-          {/* Live badge */}
-          <div className="hero-live-badge">
-            <span className="hero-live-dot" />
-            <span>Live Events Listed Daily Across Pakistan</span>
-          </div>
-
-          <h1 className="hero-title">
-            Connect Brands With{' '}
-            <span className="hero-title-gradient">Events</span>{' '}
-            Across Pakistan
-          </h1>
-
-          <p className="hero-subtitle">
-            The premier marketplace for event organizers, businesses, and attendees to discover,
-            sponsor, and experience incredible moments — from popular events in Lahore to
-            Karachi and Islamabad.
+    <>
+      <section className="market-hero">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            <span className="status-dot" /> MADE FOR PAKISTAN’S EVENT COMMUNITY
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-            <Link href="/events">
-              <Button size="lg" className="hero-btn-primary h-14 text-lg px-10">
-                🎪 Explore Events
-              </Button>
-            </Link>
-            <Link href="/signup">
-              <Button variant="outline" size="lg" className="hero-btn-outline h-14 text-lg px-10">
-                📋 List Your Event
-              </Button>
-            </Link>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="hero-trust-row">
-            {[
-              { icon: '✅', text: '500+ Verified Organizers' },
-              { icon: '🏢', text: '2,400+ Active Events' },
-              { icon: '💰', text: '₨280M+ in Deals Closed' },
-            ].map((item) => (
-              <div key={item.text} className="hero-trust-item">
-                <span>{item.icon}</span>
-                <span>{item.text}</span>
-              </div>
+          <h1>
+            Good events.
+            <br />
+            Great connections.
+            <br />
+            <em>Your next opportunity.</em>
+          </h1>
+          <p className="hero-description">
+            Discover events. Find your stall. Grow your business.
+            <br className="desktop-only" /> A simpler way to bring organizers,
+            businesses and people together.
+          </p>
+          <EventFilters compact />
+          <div className="hero-quicklinks">
+            <span>Start exploring</span>
+            {["Lahore", "Karachi", "Islamabad"].map((city) => (
+              <Link key={city} href={`/events?city=${city}`}>
+                {city}
+                <ArrowUpRight size={13} />
+              </Link>
             ))}
           </div>
         </div>
+        <div className="hero-visual">
+          <Image
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85"
+            alt="An event venue arranged for a gathering"
+            fill
+            unoptimized
+            priority
+            loading="eager"
+            sizes="(max-width: 900px) 100vw, 45vw"
+          />
+          <div className="hero-photo-caption">
+            <span>
+              <MapPin size={15} /> Discover places. Meet people.
+            </span>
+            <p>Make room for something new.</p>
+          </div>
+          <span className="photo-label">A place for your next big idea</span>
+        </div>
       </section>
-
-      {/* ===== STATS SECTION ===== */}
-      <StatsSection />
-
-      {/* ===== FEATURED EVENTS ===== */}
-      <FeaturedEvents />
-
-      {/* ===== BENEFITS SECTION ===== */}
-      <section className="benefits-section py-28 relative overflow-hidden">
-        <div className="benefits-bg" />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 benefits-badge mb-4">
-              <span>🚀</span>
-              <span>Why VendoraX?</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-5">
-              Built for <span className="benefits-heading-gradient">Pakistan&apos;s Event Industry</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Whether you organize festivals in Lahore or launch products in Karachi — VendoraX is your growth engine.
+      <section className="trusted-section section-shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">BRANDS THAT SHOW UP</p>
+            <h2>Made for the people behind the stalls.</h2>
+            <p>
+              Local businesses use VendoraX to find the right crowd, venue and
+              moment.
             </p>
           </div>
-
-          <div className="benefits-grid">
-            {/* For Organizers */}
-            <div className="benefit-card benefit-card-blue">
-              <div className="benefit-card-header">
-                <div className="benefit-card-icon">🎪</div>
-                <h3 className="benefit-card-title">For Event Organizers</h3>
-              </div>
-              <ul className="benefit-list">
-                {[
-                  'List unlimited events with our Pro plan',
-                  'Sell stalls, sponsorships & digital packages to brands directly',
-                  'Real-time stall availability & booking management',
-                  'Track engagement metrics and manage applications in one dashboard',
-                  'AI-powered brand matching for your event category',
-                ].map((item) => (
-                  <li key={item} className="benefit-item">
-                    <span className="benefit-check benefit-check-blue">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/signup?role=organizer" className="benefit-cta benefit-cta-blue">
-                Start as Organizer →
-              </Link>
+          <Link className="text-link" href="/for-businesses">
+            Join as a business <ArrowRight size={17} />
+          </Link>
+        </div>
+        <div className="brand-cloud">
+          {[
+            ["Nosh & Co", "NS", "#c97756"],
+            ["Kite Studio", "KS", "#557c62"],
+            ["Dastarkhwan", "DA", "#d28b3e"],
+            ["Northstar Labs", "NL", "#4e6eb5"],
+            ["Mitti Home", "MH", "#9c6f55"],
+            ["The Green Room", "GR", "#3b8060"],
+          ].map(([name, initials, accent]) => (
+            <div className="brand-cloud-item" key={name}>
+              <BrandLogo name={initials} accent={accent} />
+              <span>{name}</span>
             </div>
-
-            {/* For Brands */}
-            <div className="benefit-card benefit-card-purple">
-              <div className="benefit-card-header">
-                <div className="benefit-card-icon">🏢</div>
-                <h3 className="benefit-card-title">For Brands & Businesses</h3>
-              </div>
-              <ul className="benefit-list">
-                {[
-                  'Discover events targeted to your precise demographic',
-                  'Filter by city — Lahore, Karachi, Islamabad & more',
-                  'Apply for stalls and manage bookings seamlessly',
-                  'Escrow-based secure payments — pay with confidence',
-                  'Boost ROI by partnering with trending high-traffic events',
-                ].map((item) => (
-                  <li key={item} className="benefit-item">
-                    <span className="benefit-check benefit-check-purple">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/signup?role=business" className="benefit-cta benefit-cta-purple">
-                Start as a Brand →
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
-
-      {/* ===== CASE STUDIES ===== */}
-      <CaseStudiesSection />
-
-      {/* ===== BLOG SECTION ===== */}
-      <BlogSection />
-
-      {/* ===== FAQ SECTION ===== */}
-      <FAQSection />
-
-      {/* ===== TRUSTED BY SECTION ===== */}
-      <section className="trusted-section py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="trusted-title">Trusted by Leading Pakistani &amp; Global Brands</h2>
+      <section className="section-shell stay-section">
+        <div className="stay-banner">
+          <div>
+            <p className="eyebrow">THE STALL EDIT</p>
+            <h2>Book a space that feels like your brand.</h2>
+            <p>
+              From a six-foot maker table to a full pavilion, compare practical
+              packages before you apply.
+            </p>
           </div>
-          <div className="trusted-logos-row">
-            {[
-              { src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Pizza_Hut_logo.svg/512px-Pizza_Hut_logo.svg.png', alt: 'Pizza Hut', h: 'h-10' },
-              { src: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/KFC_logo.svg/512px-KFC_logo.svg.png', alt: 'KFC', h: 'h-12' },
-              { src: "https://upload.wikimedia.org/wikipedia/en/thumb/3/36/McDonald%27s_Golden_Arches.svg/512px-McDonald%27s_Golden_Arches.svg.png", alt: "McDonald's", h: 'h-10' },
-              { src: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/512px-Starbucks_Corporation_Logo_2011.svg.png', alt: 'Starbucks', h: 'h-12' },
-              { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Burger_King_2020.svg/512px-Burger_King_2020.svg.png', alt: 'Burger King', h: 'h-12' },
-            ].map((logo) => (
-              <img
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                className={`${logo.h} object-contain grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100`}
-              />
+          <Link className="action action-light" href="/events">
+            Browse packages <ArrowRight size={17} />
+          </Link>
+        </div>
+      </section>
+      <div className="purpose-strip">
+        <span>
+          <CalendarDays size={19} /> Discover local events
+        </span>
+        <span>
+          <Store size={19} /> Find a stall for your business
+        </span>
+        <span>
+          <ClipboardCheck size={19} /> Manage applications in one place
+        </span>
+      </div>
+      <section className="section-shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">FOLLOW YOUR INTERESTS</p>
+            <h2>There’s a world to explore.</h2>
+          </div>
+          <Link className="text-link" href="/categories">
+            All categories <ArrowRight size={17} />
+          </Link>
+        </div>
+        <div className="category-grid">
+          {categories.slice(0, 6).map((category, i) => {
+            const Icon = icons[i];
+            return (
+              <Link
+                key={category.slug}
+                href={`/events?category=${encodeURIComponent(category.name)}`}
+                className={`category-tile category-tone-${i}`}
+              >
+                <span className="category-icon">
+                  <Icon size={24} strokeWidth={1.6} />
+                </span>
+                <h3>{category.name}</h3>
+                <span>
+                  Explore events <ArrowUpRight size={15} />
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+      <section className="section-shell upcoming-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">GET OUT THERE</p>
+            <h2>Coming up around you.</h2>
+            <p>Discover upcoming events from our organizers.</p>
+          </div>
+          <Link className="action action-outline" href="/events">
+            Explore all events <ArrowRight size={17} />
+          </Link>
+        </div>
+        <Suspense
+          fallback={
+            <div className="empty-state" role="status">
+              Finding upcoming events…
+            </div>
+          }
+        >
+          <EventResults featured filters={{ limit: 3 }} />
+        </Suspense>
+      </section>
+      <section className="section-shell">
+        <div className="city-section">
+          <div>
+            <p className="eyebrow">A LITTLE CLOSER TO HOME</p>
+            <h2>
+              Your city.
+              <br />
+              Your community.
+            </h2>
+            <p>
+              From your neighbourhood’s next pop-up to an exhibition across the
+              country.
+            </p>
+          </div>
+          <div className="city-grid">
+            {cities.slice(0, 8).map((city, i) => (
+              <Link
+                href={`/events?city=${encodeURIComponent(city)}`}
+                key={city}
+              >
+                <span className="city-number">0{i + 1}</span>
+                <span>{city}</span>
+                <ArrowUpRight size={19} />
+              </Link>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ===== FINAL CTA SECTION ===== */}
-      <section className="final-cta-section py-28 relative overflow-hidden">
-        <div className="final-cta-bg" />
-        <div className="final-cta-blob-1" />
-        <div className="final-cta-blob-2" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="final-cta-title">
-            Your Event Deserves to Be Seen
-          </h2>
-          <p className="final-cta-subtitle">
-            Join 500+ event organizers from Lahore, Karachi, and Islamabad who use VendoraX to connect with the right brands and fill every stall.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/signup?role=organizer">
-              <Button size="lg" className="final-cta-btn-primary h-14 text-lg px-10">
-                🚀 Get Started Free
-              </Button>
+      <section className="how-section">
+        <div className="section-shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">YOUR BUSINESS, OUT IN THE WORLD</p>
+              <h2>A better way to find your spot.</h2>
+              <p>
+                From browsing to applying, keep the important details together.
+              </p>
+            </div>
+            <Link className="text-link" href="/for-businesses">
+              For businesses <ArrowRight size={17} />
             </Link>
-            <Link href="/events">
-              <Button variant="outline" size="lg" className="final-cta-btn-outline h-14 text-lg px-10">
-                🎪 Browse Events
-              </Button>
-            </Link>
+          </div>
+          <div className="steps-grid">
+            {[
+              {
+                icon: Search,
+                title: "Find the right event",
+                text: "Explore by city, category and date. Look for an audience that fits your business.",
+              },
+              {
+                icon: Store,
+                title: "Choose a stall package",
+                text: "Read the price, dimensions, facilities and organizer’s requirements.",
+              },
+              {
+                icon: ClipboardCheck,
+                title: "Apply with confidence",
+                text: "Introduce your business and follow the organizer’s decision in your dashboard.",
+              },
+            ].map((step, i) => (
+              <div className="step" key={step.title}>
+                <div className="step-top">
+                  <step.icon size={27} strokeWidth={1.5} />
+                  <span>0{i + 1}</span>
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+      <section className="section-shell">
+        <div className="organizer-callout">
+          <div>
+            <p className="eyebrow">BRING PEOPLE TOGETHER</p>
+            <h2>
+              You plan the event.
+              <br />
+              We’ll help you put it out there.
+            </h2>
+            <p>
+              Create your event, explain your stall packages and manage
+              applications from interested businesses.
+            </p>
+            <div className="callout-checks">
+              <span>
+                <Check size={16} />
+                Clear event details
+              </span>
+              <span>
+                <Check size={16} />
+                Your stall packages
+              </span>
+              <span>
+                <Check size={16} />
+                One application inbox
+              </span>
+            </div>
+          </div>
+          <Link className="action action-light" href="/signup?role=organizer">
+            Start as an organizer <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+      <section className="section-shell faq-simple">
+        <div>
+          <p className="eyebrow">A FEW THINGS TO KNOW</p>
+          <h2>
+            New here?
+            <br />
+            You’re in the right place.
+          </h2>
+          <Link className="text-link" href="/help">
+            Visit the help centre <ArrowRight size={17} />
+          </Link>
+        </div>
+        <div>
+          {[
+            {
+              q: "Can I browse without an account?",
+              a: "Yes. Explore events and read their details without signing up. An account is needed when you want to apply for a stall.",
+            },
+            {
+              q: "How do I apply for a stall?",
+              a: "Create a business account, open a published event and review its packages. Submit your introduction for the organizer to review.",
+            },
+            {
+              q: "Does applying confirm my booking?",
+              a: "No. An application is a request. Wait for the organizer’s decision and review any required next steps. Online payments are not currently available.",
+            },
+            {
+              q: "Can I list an event outside the major cities?",
+              a: "Yes. Organizers can enter their city and venue when creating an event. Listings are reviewed before appearing publicly.",
+            },
+          ].map((item) => (
+            <details key={item.q}>
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,6 +1,12 @@
-import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import React from "react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 
 interface StallCardProps {
   name: string;
@@ -11,14 +17,19 @@ interface StallCardProps {
   onApply?: () => void;
 }
 
-export function StallCard({ name, price, size, perks, isBusiness = false, onApply }: StallCardProps) {
+export function StallCard({
+  name,
+  price,
+  size,
+  perks,
+  isBusiness = false,
+  onApply,
+}: StallCardProps) {
   return (
     <Card className="flex flex-col h-full hover:border-primary transition-colors">
       <CardHeader>
         <CardTitle className="text-xl">{name}</CardTitle>
-        <div className="text-3xl font-bold mt-2">
-          ${price}
-        </div>
+        <div className="text-3xl font-bold mt-2">Rs. {price}</div>
       </CardHeader>
       <CardContent className="flex-1 space-y-4">
         <div className="text-sm font-medium border-b border-border pb-2">
@@ -26,7 +37,10 @@ export function StallCard({ name, price, size, perks, isBusiness = false, onAppl
         </div>
         <ul className="space-y-2">
           {perks.map((perk, i) => (
-            <li key={i} className="flex items-start text-sm text-muted-foreground">
+            <li
+              key={i}
+              className="flex items-start text-sm text-muted-foreground"
+            >
               <span className="text-primary mr-2">✓</span>
               {perk}
             </li>
@@ -34,8 +48,8 @@ export function StallCard({ name, price, size, perks, isBusiness = false, onAppl
         </ul>
       </CardContent>
       <CardFooter>
-        <Button 
-          className="w-full" 
+        <Button
+          className="w-full"
           variant={isBusiness ? "primary" : "secondary"}
           disabled={!isBusiness}
           onClick={isBusiness ? onApply : undefined}

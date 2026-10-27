@@ -1,0 +1,487 @@
+{
+  "base": "http://localhost:3000",
+  "passed": 60,
+  "total": 60,
+  "results": [
+    {
+      "route": "/",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/events",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/events?city=Lahore&category=Technology&q=conference&sort=soonest",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/events?q=a&q=b",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/categories",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/cities",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/for-organizers",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/for-businesses",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/about",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/contact",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/help",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/terms",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/privacy",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/cookies",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/login",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/signup?role=organizer",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/signup?role=business",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/forgot-password",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/reset-password",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/blog",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/blog/popular-events-lahore-2024",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/blog/popular-events-karachi-2024",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/blog/popular-events-islamabad-2024",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/sitemap.xml",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/robots.txt",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/profile",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/favorites",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/onboarding",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/user/dashboard",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/business/dashboard",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/business/applications",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/organizer/dashboard",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/organizer/my-events",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/organizer/create-event",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/organizer/applications",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/admin/dashboard",
+      "method": "GET",
+      "status": 307,
+      "expected": 307,
+      "location": "/login",
+      "pass": true
+    },
+    {
+      "route": "/events/not-a-valid-id",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/blog/not-a-real-article",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/organizers/not-a-valid-id",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/chat",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/chat",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/chat",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/chat",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/seo/generate",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/seo/generate",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/seo/generate",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/seo/generate",
+      "method": "POST",
+      "status": 400,
+      "expected": 400,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/applications",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/applications/00000000-0000-0000-0000-000000000001/decision",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/events",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/events/00000000-0000-0000-0000-000000000001",
+      "method": "PATCH",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/profile",
+      "method": "PATCH",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/admin/events/00000000-0000-0000-0000-000000000001",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/seo/generate",
+      "method": "POST",
+      "status": 401,
+      "expected": 401,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/applications",
+      "method": "POST",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/applications/00000000-0000-0000-0000-000000000001/decision",
+      "method": "POST",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/events",
+      "method": "POST",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/events/00000000-0000-0000-0000-000000000001",
+      "method": "PATCH",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/profile",
+      "method": "PATCH",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    },
+    {
+      "route": "/api/admin/events/00000000-0000-0000-0000-000000000001",
+      "method": "POST",
+      "status": 403,
+      "expected": 403,
+      "location": null,
+      "pass": true
+    }
+  ]
+}
