@@ -78,6 +78,7 @@ export function Sidebar({ role }: SidebarProps) {
               <Link
                 key={link.name}
                 href={link.href}
+                prefetch={false}
                 className={cn(
                   "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                   isActive
